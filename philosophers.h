@@ -6,7 +6,7 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 20:22:06 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/03/15 02:39:45 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/03/17 01:48:53 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ typedef struct s_args
 	int				nbr_of_philos;
 	int				nbr_of_meals;
 	pthread_mutex_t	pen;
+	long			time_start;
 }				t_args;
 
 typedef struct s_philo
 {
 	pthread_t		th;
 	int				index;
-	useconds_t		last_eat;
+	unsigned long		last_eat;
 	t_args			*args;
 	pthread_mutex_t	fork;
 	int				nbr_of_meals;
@@ -44,6 +45,7 @@ typedef struct s_philo
 }				t_philo;
 
 int				ft_atoi(char *str);
+int				philo_pars(char **arg, int ac);
 unsigned long	get_time(void);
 t_args			*init_philo(char **args);
 t_philo			*create_philos(t_args	*data);

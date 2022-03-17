@@ -6,11 +6,11 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 20:46:31 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/03/11 01:36:02 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/03/15 15:47:02 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../philosophers.h"
 
 int	philo_pars(char **arg, int ac)
 {

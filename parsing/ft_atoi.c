@@ -6,37 +6,33 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 01:18:13 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/03/11 23:47:35 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:08:40 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../philosophers.h"
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	s;
-	int	ret;
+	unsigned int	num;
+	int				i;
+	int				np;
 
+	np = 1;
 	i = 0;
-	s = 1;
-	ret = 0;
+	num = 0;
 	if (!str)
-		return (0);
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		return (-1);
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f'
+		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\v')
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '+' || str[i] == '-')
+		if (str[i++] == '-')
+			np = -1;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		if (str[i] == '-')
-			s *= -1;
+		num = num * 10 + (str[i] - '0');
 		i++;
 	}
-	while (str[i])
-	{
-		if (str[i] < 48 && str[i] > 57)
-			return (-1);
-		ret *= 10 + (str[i] - 48);
-		i++;
-	}
-	return (ret * s);
+	return ((int)(np * num));
 }
