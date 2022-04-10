@@ -6,7 +6,7 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 20:16:55 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/03/17 01:50:11 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/04/02 18:14:23 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_philo	*create_philos(t_args	*data)
 	i = 0;
 	while (i < data->nbr_of_philos)
 	{
-		philos[i].index = i;
+		philos[i].index = i + 1;
 		philos[i].last_eat = get_time();
 		if (pthread_mutex_init(&philos[i].fork, NULL) == -1)
 			return (free(philos), NULL);
@@ -110,6 +110,7 @@ void	start_philos(t_philo *philos)
 			= &philos[(i + 1) % philos[i].args->nbr_of_philos].fork;
 		philos[i].last_eat = get_time();
 		philos[i].nbr_of_meals = 0;
+		philos[i].counted = false;
 	}
 	i = -1;
 	while (++i < philos[0].args->nbr_of_philos)
@@ -121,16 +122,19 @@ void	start_philos(t_philo *philos)
 
 void	check_death(t_philo *philo)
 {
-	t_philo *tmp;
+	t_philo	*tmp;
 	int		i;
+	int		count;
+	int		n;
 
-	int N = philo[0].args->nbr_of_philos;
+	count = 0;
+	n = philo[0].args->nbr_of_philos;
 	tmp = philo;
 	ft_usleep(philo->args->time_to_die / 2);
-	while(1)
+	while (1)
 	{
 		i = -1;
-		while (++i < N)
+		while (++i < n)
 		{
 			if ((int)(get_time() - philo[i].last_eat) > philo[i].args->time_to_die)
 			{
@@ -138,8 +142,18 @@ void	check_death(t_philo *philo)
 				printf("%ld %d die\n", (get_time() - philo->args->time_start) , philo->index);
 				return ;
 			}
+			if (!philo[i].counted
+				&& philo[i].nbr_of_meals >= philo[i].args->nbr_of_meals)
+			{
+				count++;
+				philo[i].counted = true;
+			}
+			if (count == n && philo[i].args->nbr_of_meals != -1)
+			{
+				pthread_mutex_lock(&philo[i].args->pen);
+				return ;
+			}
 		}
-		usleep(50);
 	}
 }
 
@@ -147,12 +161,11 @@ int	main(int ac, char **av)
 {
 	t_args	*data;
 	t_philo	*philos;
-	// int		i;
 
 	if (ac != 5 && ac != 6)
 		return (printf("args error\n"), 0);
 	if (!philo_pars(av, ac))
-		printf("error\n");
+		return (printf("error\n"), 0);
 	data = init_philo(av);
 	if (!data)
 		return (printf("table was not created\n"), 2);
@@ -161,11 +174,4 @@ int	main(int ac, char **av)
 		return (free(data), printf("An error has been occured\n"), 2);
 	start_philos(philos);
 	check_death(philos);
-	// check death (and complet number of meals)
-// 	i = -1;
-// 	while (++i)
-// 	{
-		
-// 	}
-// }
 }
