@@ -6,11 +6,11 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 01:18:13 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/03/15 16:08:40 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/04/11 03:25:26 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 
 int	ft_atoi(char *str)
 {

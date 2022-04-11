@@ -1,10 +1,12 @@
-NAME = philosophers
+NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-INC = philosophers.h
-CFILES = philosophers.c \
+INC = philo.h
+CFILES = philo.c \
 		 parsing/ft_atoi.c \
-		 parsing/philo_pars.c
+		 parsing/philo_pars.c \
+		 utils.c \
+		 check_full_death.c
 MOBJS = ${CFILES:.c=.o}
 
 all: $(NAME)
@@ -14,7 +16,6 @@ $(NAME): $(MOBJS) $(INC)
 	cc $(CFLAGS) -c $< -o $@
 clean :
 	 rm -rf $(MOBJS)
-	 rm -rf $(BOBJS)
 fclean : clean
 	 rm -rf $(NAME)
 re : fclean all

@@ -1,31 +1,21 @@
-NAME = philosophers_bonus
+BNAME = philo_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-INC = philosophers_bonus.h
-CFILES = philosophers_bonus.c \
+BINC = philo_bonus.h
+BFILES = philo_bonus.c \
 		 parsing_bonus/ft_atoi.c \
 		 parsing_bonus/philo_pars.c \
-
-# BFILES_x = 
-	
-# BFILES = $(addprefix bonus/, $(BFILES_x))
-
-MOBJS = ${CFILES:.c=.o}
+		 utils.c \
+		 utils2.c
 BOBJS = ${BFILES:.c=.o}
 
-all: $(NAME)
-
-$(NAME): $(MOBJS) $(INC)
-	@$(CC) $(FLAGS) $(FRAME) $(MOBJS) -o $(NAME)
-
-#bonus : $(BOBJS)
-#	@$(CC) $(FLAGS) $(FRAME) $(BOBJS) -o $(BONUS_NAME)
-
+all: $(BNAME)
+$(BNAME): $(BOBJS) $(BINC)
+	$(CC) $(FLAGS) $(FRAME) $(BOBJS) -o $(BNAME)
 %.o:%.c $(INC)
-	@cc $(CFLAGS) -c $< -o $@
+	cc $(CFLAGS) -c $< -o $@
 clean :
-	@ rm -rf $(MOBJS)
-	@ rm -rf $(BOBJS)
+	 rm -rf $(BOBJS)
 fclean : clean
-	@ rm -rf $(NAME) $(BONUS_NAME)
+	 rm -rf $(BNAME)
 re : fclean all

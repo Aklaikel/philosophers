@@ -6,11 +6,11 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 01:18:13 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/04/05 07:51:11 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/04/11 02:53:08 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers_bonus.h"
+#include "../philo_bonus.h"
 
 int	ft_atoi(char *str)
 {

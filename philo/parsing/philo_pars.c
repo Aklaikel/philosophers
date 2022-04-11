@@ -6,15 +6,16 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 20:46:31 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/03/21 17:24:33 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/04/11 03:25:29 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../philo.h"
 
 int	philo_pars(char **arg, int ac)
 {
 	int	i;
+
 	i = 0;
 	while (ac > ++i)
 		if (ft_atoi(arg[i]) < 1)

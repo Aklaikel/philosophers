@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 20:22:06 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/03/21 17:18:20 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/04/11 03:52:19 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#ifndef PHILO_H
+# define PHILO_H
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -48,10 +48,10 @@ typedef struct s_philo
 int				ft_atoi(char *str);
 int				philo_pars(char **arg, int ac);
 unsigned long	get_time(void);
+void			ft_usleep(unsigned long time);
 t_args			*init_philo(char **args);
 t_philo			*create_philos(t_args	*data);
 void			*routine(t_philo *philo);
 void			start_philos(t_philo *philos);
-void			check_death(t_philo *philo);
-
+void			check_finish(t_philo *philo);
 #endif
