@@ -95,7 +95,7 @@ int	main(int ac, char **av)
 		return (free(data), printf("table was not created\n"), 2);
 	philos = philos_create(data);
 	if (!philos)
-		return (printf("philos was not created\n"), 2);
+		return (free(data), printf("philos was not created\n"), 2);
 	start_philos(philos);
 	free(data);
 	free(philos);
