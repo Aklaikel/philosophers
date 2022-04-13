@@ -6,7 +6,7 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 02:24:49 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/04/11 03:22:50 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/04/13 02:09:16 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	cont_routine(t_philo_b *philo)
 	ft_usleep(philo->args->time_to_eat);
 	philo->last_eat = get_time();
 	philo->args->nbr_of_meals--;
-	if (philo->nbr_of_meals == 0)
+	if (philo->args->nbr_of_meals == 0)
 		exit(0);
 	sem_wait(philo->args->pen);
 	printf("%ld %d is sleeping\n", \
@@ -97,4 +97,6 @@ int	main(int ac, char **av)
 	if (!philos)
 		return (printf("philos was not created\n"), 2);
 	start_philos(philos);
+	free(data);
+	free(philos);
 }

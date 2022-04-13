@@ -6,7 +6,7 @@
 /*   By: aklaikel <aklaikel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 02:46:30 by aklaikel          #+#    #+#             */
-/*   Updated: 2022/04/11 03:19:59 by aklaikel         ###   ########.fr       */
+/*   Updated: 2022/04/11 18:38:23 by aklaikel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_philo_b	*philos_create(t_args_b *data)
 	int			i;
 
 	philos = malloc(sizeof(t_philo_b) * data->nbr_of_philos);
+	if (!philos)
+		return (NULL);
 	i = -1;
 	while (++i < data->nbr_of_philos)
 	{
