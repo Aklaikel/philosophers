@@ -11,7 +11,7 @@ MOBJS = ${CFILES:.c=.o}
 
 all: $(NAME)
 $(NAME): $(MOBJS) $(INC)
-	$(CC) $(FLAGS) $(FRAME) $(MOBJS) -o $(NAME)
+	$(CC) $(FLAGS) $(MOBJS) -o $(NAME)
 %.o:%.c $(INC)
 	cc $(CFLAGS) -c $< -o $@
 clean :
