@@ -23,6 +23,9 @@ int	ft_atoi(char *str)
 	num = 0;
 	if (!str)
 		return (-1);
+	for(int i=0; i < strlen(str); i++)
+		if(!isdigit(str[i]))
+			return(-1);
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\f'
 		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\v')
 		i++;
